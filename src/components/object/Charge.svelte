@@ -2,6 +2,7 @@
   // @ts-check
   import {shieldPositions} from "data/shields";
   import {drag, transform, getElTransform} from "scripts/drag";
+  import {highlight, lowlight} from "scripts/highlight";
   import type {Coa, Charge} from "types/coa";
 
   export let coa: Coa;
@@ -41,6 +42,8 @@
   transform={transform(charge)}
   stroke={charge.stroke || "#000"}
   on:mousedown={addDrag}
+  on:mouseenter={type === "Edit" ? highlight("charge", i) : null}
+  on:mouseleave={type === "Edit" ? lowlight("charge", i) : null}
   style="--secondary: {t2 || t}; --tertiary: {t3 || t}"
 >
   {#each validPositions as position}

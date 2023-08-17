@@ -4,6 +4,7 @@
   import {changes, grid, history, isTextReady, message, shield, showGrid, state, tinctures} from "data/stores";
   import {charges, divisions, ordinaries} from "data/dataModel";
   import {createConfig, generate, getTincture} from "scripts/generator";
+  import {highlight, lowlight} from "scripts/highlight";
   import {P, ra, rw} from "scripts/utils";
   import COA from "./../object/COA.svelte";
   import EditorAbove from "./EditorAbove.svelte";
@@ -59,6 +60,11 @@
     } else {
       section[name] = !section[name];
     }
+    /* When a section is shown, the COA highlighting disappears due to a reactivity issue
+       that should be fixed in Svelte 5 (see https://github.com/sveltejs/svelte/issues/8551)
+       For now, make it disappear also when the section is hidden for consistency
+    */
+    lowlight(name, index, true)();
   };
 
   // get coa from menu on menu change
@@ -551,10 +557,13 @@
     <!-- Ordinaries -->
     {#each menu.ordinaries as o, i}
       <div
+        id="ordinary_{i}"
         class="section"
         transition:slide
         class:expanded={section.ordinary[i]}
         on:click={toggleSection("ordinary", i)}
+        on:mouseenter={highlight("ordinary", i, true)}
+        on:mouseleave={lowlight("ordinary", i, true)}
       >
         {#if $isTextReady}
           {$t("editor.ordinary")}{menu.ordinaries.length > 1 ? ` ${i + 1}` : ""}: {translateSafely(
@@ -607,7 +616,15 @@
 
     <!-- Charges -->
     {#each menu.charges as charge, i}
-      <div class="section" transition:slide class:expanded={section.charge[i]} on:click={toggleSection("charge", i)}>
+      <div
+        id="charge_{i}"
+        class="section"
+        transition:slide
+        class:expanded={section.charge[i]}
+        on:click={toggleSection("charge", i)}
+        on:mouseenter={highlight("charge", i, true)}
+        on:mouseleave={lowlight("charge", i, true)}
+      >
         {#if $isTextReady}
           {$t("tinctures.charge")}{menu.charges.length > 1 ? ` ${i + 1}` : ""}: {translateSafely(
             "charges",
@@ -674,10 +691,13 @@
     <!-- Inscriptions -->
     {#each menu.inscriptions as inscription, i}
       <div
+        id="inscription_{i}"
         class="section"
         transition:slide
         class:expanded={section.inscription[i]}
         on:click={toggleSection("inscription", i)}
+        on:mouseenter={highlight("inscription", i, true)}
+        on:mouseleave={lowlight("inscription", i, true)}
       >
         {#if $isTextReady}
           {$t("editor.inscription")}{menu.inscriptions.length > 1 ? ` ${i + 1}` : ""}: {inscription.text}
@@ -791,6 +811,10 @@
 
   .expanded:after {
     transform: rotate(90deg);
+  }
+
+  :global(.section.highlighted) {
+    text-shadow: 1px 0 4px yellow, 0 1px 4px yellow, -1px 0 4px yellow, 0 -1px 4px yellow;
   }
 
   :global(.section > span) {
