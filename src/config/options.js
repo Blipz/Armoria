@@ -9,4 +9,4 @@ export const sizes = [
 
 export const gradients = ["no", "luster", "spotlight", "backlight", "brink"];
 
-export const diapers = ["no", "nourse", "tessellation", "sennwald", "sulzbach"];
+export const diapers = ["no", "nourse", "tessellation", "sennwald", "sulzbach", "strasbourg"];
