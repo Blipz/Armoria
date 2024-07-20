@@ -88,6 +88,7 @@
       "vesicaPiscis": "Vesica Piscis",
       "square": "Square",
       "diamond": "Diamond",
+      "caironat": "Caironat",
       "hexagon": "Hexagon",
       "no": "No"
     },
@@ -787,6 +788,7 @@
     "inescutcheonVesicaPiscis": "Inescutcheon Vesica Piscis",
     "inescutcheonSquare": "Inescutcheon Square",
     "inescutcheonDiamond": "Inescutcheon Diamond",
+    "inescutcheonCaironat": "Inescutcheon Caironat",
     "inescutcheonHexagon": "Inescutcheon Hexagon",
     "inescutcheonNo": "Inescutcheon No",
     "inescutcheonFantasy1": "Inescutcheon Fantasy1",
