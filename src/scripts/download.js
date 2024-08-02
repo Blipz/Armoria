@@ -53,11 +53,13 @@ async function getURL(svg, width, height) {
   clone.removeAttribute("id");
   const d = clone.getElementsByTagName("defs")[0];
 
-  // remove grid if any
+  // remove grid and positions if any
   const grid = clone.getElementById("grid");
   const gridPattern = clone.getElementById("gridPattern");
+  const positions = clone.getElementById("positions");
   if (grid) grid.remove();
   if (gridPattern) gridPattern.remove();
+  if (positions) positions.remove();
 
   const gr = get(grad),
     di = get(diaper);
