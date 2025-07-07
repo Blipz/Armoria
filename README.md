@@ -6,7 +6,7 @@ The GUI is available on [Vercel](https://armoria.vercel.app/). Join our [Reddit 
 
 You can support the project on [Patreon](https://www.patreon.com/azgaar).
 
-A tutorial is available [on Wiki](https://github.com/Azgaar/Armoria/wiki/Armoria-Tutorial). In case you want to help with translation, join the project on [Crowdin](https://crowdin.com/project/armoria).
+A tutorial is available [on Wiki](https://github.com/Azgaar/Armoria/wiki/Armoria-Tutorial). In case you want to help with translations, join the project on [Crowdin](https://crowdin.com/project/armoria).
 
 ![Gallery View](static/preview.png)
 
