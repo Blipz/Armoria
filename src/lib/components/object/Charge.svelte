@@ -45,6 +45,6 @@
   style="--secondary: {t2 || t}; --tertiary: {t3 || t}; --stroke: {charge.stroke || "#000"}; --background: {hideBackground ? 'none' : 'block'}"
 >
   {#each validPositions as position}
-    <use xlink:href="#{chargeId}" transform={getElTransform(charge, position, shield)} />
+    <use href="#{chargeId}" transform={getElTransform(charge, position, shield)} />
   {/each}
 </g>
