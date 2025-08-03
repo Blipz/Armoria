@@ -57,8 +57,9 @@
       const dx = obj.x === undefined ? 0 : obj.x - pathData.points[0].x;
       const dy = obj.y === undefined ? 0 : obj.y - pathData.points[0].y;
       pathData.points.forEach(function (p) {
-        p.x += dx;
-        p.y += dy;
+        // Arbitrary precision of 0.001 to avoid floating number issues
+        p.x = Math.round((p.x + dx) * 1000) / 1000;
+        p.y = Math.round((p.y + dy) * 1000) / 1000;
       });
     }
     path = buildPath(pathData.type, pathData.points);
