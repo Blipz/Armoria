@@ -334,6 +334,7 @@
     "category": "Category",
     "division": "Division",
     "line": "Line",
+    "dash": "Dash",
     "divided": "Divided",
     "notDivided": "No (standard)",
     "cropByField": "Crop by main field",

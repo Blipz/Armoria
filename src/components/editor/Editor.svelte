@@ -132,6 +132,7 @@
         }
         if (o.angle) item.angle = o.angle;
         if (o.above) item.above = true;
+        if (["bordure", "orle"].includes(o.ordinary) && o.dash) item.dash = o.dash;
         return item;
       });
     } else delete coa.ordinaries;
@@ -274,8 +275,9 @@
         const angle = o.angle || 0;
         const divided = o.divided || "";
         const above = o.above || false;
+        const dash = o.dash || 0;
         if (angle) $state.transform = `rotate(${angle})`;
-        return {ordinary, field, line, showStroke, stroke, strokeWidth, size, stretch, x, y, angle, divided, above};
+        return {ordinary, field, line, showStroke, stroke, strokeWidth, size, stretch, x, y, angle, divided, above, dash};
       });
 
       return ordinaries;
@@ -575,6 +577,14 @@
           <div class="subsection">
             <EditorOrdinary bind:ordinary={o.ordinary} t1={coa.t1} line={o.line} t2={o.field.t1} shield={coa.shield} />
           </div>
+
+          {#if ["bordure", "orle"].includes(o.ordinary)}
+            <div class="subsection">
+              <!--<EditorDash bind:dash={o.dash} />-->
+              <span style="margin-left: 1em">{$t("editor.dash")}:</span>
+              <input type="number" min="0" max="100" step="1" bind:value={o.dash} />
+            </div>
+          {/if}
 
           {#if ordinaries.lined[o.ordinary]}
             <div class="subsection">
