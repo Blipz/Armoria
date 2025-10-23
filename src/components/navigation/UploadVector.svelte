@@ -3,7 +3,7 @@
   import {t} from "svelte-i18n";
   import LicenseList from "./LicenseList.svelte";
   import {state, colors, tinctures, message, shield, uploaded} from "data/stores";
-  import {charges} from "data/dataModel";
+  import {charges, registerCharge} from "data/dataModel";
   import {DEFAULT_SHIELD_BOX, shieldPaths} from "data/shields";
   import {updateCharge} from "scripts/getters";
   import {camelize} from "scripts/utils";
@@ -108,9 +108,7 @@
       return;
     }
 
-    if (!charges.types[category]) charges.types[category] = 6;
-    if (!charges.single[category]) charges.single[category] = 6;
-    charges[category][name] = 5;
+    registerCharge(name, category, 5);
     const colors = svg.includes("tertiary") ? 3 : svg.includes("secondary") ? 2 : 1;
     charges.data[name] = {colors};
 

@@ -1724,4 +1724,15 @@ export const charges = {
   data: chargeData
 };
 
+export function registerCharge(name, category, chance) {
+    if (!charges.types[category]) charges.types[category] = 6;
+    if (!charges.single[category]) charges.single[category] = 6;
+    charges[category][name] = chance;
+
+    // remove stored weighted arrays
+    delete charges.types.array;
+    delete charges.single.array;
+    delete charges[category].array;
+}
+
 export const patternSize = {standard: 154, small: 20, smaller: 20, big: 5, smallest: 1};

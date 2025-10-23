@@ -2,7 +2,7 @@
   // @ts-check
   import {shields} from "data/shields";
   import {background, fonts, history, isTextReady, matrices, matrix, message, shield, size, state, uploaded} from "data/stores";
-  import {charges} from "data/dataModel";
+  import {charges, registerCharge} from "data/dataModel";
   import "scripts/i18n";
   import {rw} from "scripts/utils";
   import {locale} from "svelte-i18n";
@@ -79,7 +79,7 @@
 
   function loadCustomCharges() {
     Object.entries($uploaded).forEach(([name, {category, type, data, content}]) => {
-      charges[category][name] = 0;
+      registerCharge(name, category, 5);
       if (data) {
         charges.data[name] = data;
       }
