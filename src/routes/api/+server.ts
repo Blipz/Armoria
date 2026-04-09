@@ -65,7 +65,7 @@ async function send(format: string, svg: string) {
 
   let converter, contentType;
   if (format === "png") {
-    pngConverter ||= await createPngConverter({launch: options});
+    pngConverter ||= await createPngConverter({launch: options, closeBehavior: "none"});
     converter = pngConverter;
     contentType = "image/png";
   } else if (format === "jpg" || format === "jpeg") {
